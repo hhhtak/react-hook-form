@@ -1,31 +1,23 @@
 "use client";
 
 import { FC } from "react";
-import { ContactSchema, ContactType } from "@/schema/contact";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { useContactForm } from "./useContactForm.hook";
 
-interface ContactFormProps {}
-
-export const ContactForm: FC<ContactFormProps> = () => {
-  const handleSubmit: SubmitHandler<ContactType> = (data) => {
-    console.log(data);
-  };
-
+export const ContactForm: FC = () => {
   const {
+    handleSubmit,
+    handleFormSubmit,
     register,
-    handleSubmit: Submit,
-    formState: { errors: formatError, isValid, isSubmitting },
-  } = useForm<ContactType>({
-    mode: "onBlur",
-    resolver: zodResolver(ContactSchema),
-  });
+    errors,
+    isSubmitting,
+    isValid,
+  } = useContactForm();
 
   return (
     <form
       method="post"
       onSubmit={(event) => {
-        void Submit(handleSubmit)(event);
+        handleSubmit(handleFormSubmit)(event);
       }}
       className="flex flex-col space-y-10"
     >
@@ -37,9 +29,9 @@ export const ContactForm: FC<ContactFormProps> = () => {
           className="text-gray-800 mt-4 rounded-md border py-2 px-3"
           placeholder="例）mail@example.com"
         />
-        {formatError.email && (
+        {errors.email && (
           <div className="text-red-500 pl-1 pt-1 text-xs">
-            {formatError.email.message}
+            {errors.email.message}
           </div>
         )}
       </label>
@@ -52,9 +44,9 @@ export const ContactForm: FC<ContactFormProps> = () => {
           className="text-gray-800 mt-4 rounded-md border py-2 px-3"
           placeholder="例）09012345678"
         />
-        {formatError.telephone && (
+        {errors.telephone && (
           <div className="text-red-500 pl-1 pt-1 text-xs">
-            {formatError.telephone.message}
+            {errors.telephone.message}
           </div>
         )}
       </label>
@@ -67,9 +59,9 @@ export const ContactForm: FC<ContactFormProps> = () => {
           className="text-gray-800 mt-4 rounded-md border py-2 px-3"
           placeholder="例）山田"
         />
-        {formatError.lastName && (
+        {errors.lastName && (
           <div className="text-red-500 pl-1 pt-1 text-xs">
-            {formatError.lastName.message}
+            {errors.lastName.message}
           </div>
         )}
         <input
@@ -78,9 +70,9 @@ export const ContactForm: FC<ContactFormProps> = () => {
           className="text-gray-800 mt-4 rounded-md border py-2 px-3"
           placeholder="例）太郎"
         />
-        {formatError.firstName && (
+        {errors.firstName && (
           <div className="text-red-500 pl-1 pt-1 text-xs">
-            {formatError.firstName.message}
+            {errors.firstName.message}
           </div>
         )}
       </label>
@@ -93,9 +85,9 @@ export const ContactForm: FC<ContactFormProps> = () => {
           className="text-gray-800 mt-4 rounded-md border py-2 px-3"
           placeholder="例）株式会社◯✕△"
         />
-        {formatError.organizationName && (
+        {errors.organizationName && (
           <div className="text-red-500 pl-1 pt-1 text-xs">
-            {formatError.organizationName.message}
+            {errors.organizationName.message}
           </div>
         )}
       </label>
@@ -107,9 +99,9 @@ export const ContactForm: FC<ContactFormProps> = () => {
           className="h-36 border px-2 py-1"
         ></textarea>
 
-        {formatError.message && (
+        {errors.message && (
           <div className="text-red-500 pl-1 pt-1 text-xs">
-            {formatError.message.message}
+            {errors.message.message}
           </div>
         )}
       </label>
@@ -126,9 +118,9 @@ export const ContactForm: FC<ContactFormProps> = () => {
             <p>個人情報取り扱いに同意する</p>
           </label>
         </div>
-        {formatError.agree && (
+        {errors.agree && (
           <div className="text-red-500 pl-1 pt-1 text-center text-xs">
-            {formatError.agree.message}
+            {errors.agree.message}
           </div>
         )}
       </div>
