@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { FC } from "react";
-import { useContactForm } from "./useContactForm.hook";
+import { FC } from 'react';
+import { useContactForm } from './useContactForm.hook';
 
 export const ContactForm: FC = () => {
   const {
@@ -25,7 +25,7 @@ export const ContactForm: FC = () => {
         <div className="text-sm font-bold mb-1">メールアドレス</div>
         <input
           type="text"
-          {...register("email")}
+          {...register('email')}
           className="text-gray-800 mt-4 rounded-md border py-2 px-3"
           placeholder="例）mail@example.com"
         />
@@ -40,7 +40,7 @@ export const ContactForm: FC = () => {
         <div className="text-sm font-bold mb-1">電話番号</div>
         <input
           type="text"
-          {...register("telephone")}
+          {...register('telephone')}
           className="text-gray-800 mt-4 rounded-md border py-2 px-3"
           placeholder="例）09012345678"
         />
@@ -55,7 +55,7 @@ export const ContactForm: FC = () => {
         <div className="text-sm font-bold mb-1">お名前</div>
         <input
           type="text"
-          {...register("lastName")}
+          {...register('lastName')}
           className="text-gray-800 mt-4 rounded-md border py-2 px-3"
           placeholder="例）山田"
         />
@@ -66,7 +66,7 @@ export const ContactForm: FC = () => {
         )}
         <input
           type="text"
-          {...register("firstName")}
+          {...register('firstName')}
           className="text-gray-800 mt-4 rounded-md border py-2 px-3"
           placeholder="例）太郎"
         />
@@ -81,7 +81,7 @@ export const ContactForm: FC = () => {
         <div className="text-sm font-bold mb-1">企業名</div>
         <input
           type="text"
-          {...register("organizationName")}
+          {...register('organizationName')}
           className="text-gray-800 mt-4 rounded-md border py-2 px-3"
           placeholder="例）株式会社◯✕△"
         />
@@ -95,7 +95,7 @@ export const ContactForm: FC = () => {
       <label className="flex flex-col space-y-1">
         <div className="text-sm font-bold mb-1">お問い合わせ内容</div>
         <textarea
-          {...register("message")}
+          {...register('message')}
           className="h-36 border px-2 py-1"
         ></textarea>
 
@@ -112,7 +112,7 @@ export const ContactForm: FC = () => {
             <input
               type="checkbox"
               value="true"
-              {...register("agree")}
+              {...register('agree')}
               className="h-5 w-5"
             />
             <p>個人情報取り扱いに同意する</p>
