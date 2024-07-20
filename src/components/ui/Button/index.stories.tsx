@@ -10,24 +10,16 @@ export default meta;
 type Story = StoryObj<typeof Button>;
 
 export const Default: Story = {
-  render: () => {
-    return <Button>hogehoge</Button>;
+  render: (args) => <Button {...args} />,
+  args: {
+    children: 'hogehoge',
   },
-  // parameters: {
-  //   nextjs: {
-  //     router: {
-  //       pathname: "/profile/[id]",
-  //       asPath: "/profile/1",
-  //       query: {
-  //         id: "1",
-  //       },
-  //     },
-  //   },
-  // },
 };
 
 export const Small: Story = {
-  render: () => {
-    return <Button size="small">hogehoge</Button>;
+  render: (args) => <Button {...args} />,
+  args: {
+    children: 'hogehoge',
+    size: 'small',
   },
 };
