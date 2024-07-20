@@ -10,6 +10,7 @@ export const Button: FC<Props> = ({ children, size = 'normal', ...props }) => {
     <button
       type="button"
       className={`${size === 'small' ? 'w-[120px]' : 'w-[240px]'}`}
+      {...props}
     >
       {children}
     </button>
