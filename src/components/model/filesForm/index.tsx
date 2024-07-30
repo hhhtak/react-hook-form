@@ -5,19 +5,19 @@ import { useFilesForm } from './useFilesForm.hook';
 
 export const FilesForm: FC = () => {
   const {
-    // handleSubmit,
-    // handleFormSubmit,
-    // register,
-    // errors,
-    // isSubmitting,
+    errors,
+    handleFormSubmit,
+    handleSubmit,
+    isSubmitting,
     isValid,
+    register,
   } = useFilesForm();
 
   return (
     <form
       method="post"
       onSubmit={(event) => {
-        event;
+        handleSubmit(handleFormSubmit)(event);
       }}
       className="flex flex-col space-y-10"
     >
@@ -25,20 +25,19 @@ export const FilesForm: FC = () => {
         <div className="text-sm font-bold mb-1">ファイル</div>
         <input
           type="file"
-          // {...register('email')}
+          {...register('formFile')}
           className="text-gray-800 mt-4 rounded-md border py-2 px-3"
-          // placeholder="例）mail@example.com"
         />
-        {/* {errors.email && (
+        {errors.formFile && (
           <div className="text-red-500 pl-1 pt-1 text-xs">
-            {errors.email.message}
+            {errors.formFile.message}
           </div>
-        )} */}
+        )}
       </label>
 
       <button
         type="submit"
-        disabled={!isValid}
+        disabled={!isValid || isSubmitting}
         className="bg-slate-800 hover:bg-slate-600 rounded px-4 py-2 text-white  disabled:bg-gray-300 md:self-center"
       >
         送信する

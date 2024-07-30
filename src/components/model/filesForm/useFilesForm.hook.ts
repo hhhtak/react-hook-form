@@ -1,21 +1,24 @@
 'use client';
-import { contactSchema, ContactType } from '@/validations/contactSchema';
+import { fileSchema, FileSchemaType } from '@/validations/fileSchema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useCallback } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 export const useFilesForm = () => {
-  const handleFormSubmit: SubmitHandler<ContactType> = useCallback((data) => {
-    console.log(data);
-  }, []);
+  const handleFormSubmit: SubmitHandler<FileSchemaType> = useCallback(
+    (data) => {
+      console.log(data);
+    },
+    [],
+  );
 
   const {
     register,
     handleSubmit,
     formState: { errors, isValid, isSubmitting },
-  } = useForm<ContactType>({
-    mode: 'onBlur',
-    resolver: zodResolver(contactSchema),
+  } = useForm<FileSchemaType>({
+    mode: 'onChange',
+    resolver: zodResolver(fileSchema),
   });
 
   return {
