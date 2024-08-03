@@ -17,7 +17,7 @@ export const useFilesForm = () => {
     handleSubmit,
     formState: { errors, isValid, isSubmitting },
   } = useForm<FileSchemaType>({
-    mode: 'onChange',
+    mode: 'onBlur',
     resolver: zodResolver(fileSchema),
   });
 

@@ -35,6 +35,20 @@ export const FilesForm: FC = () => {
         )}
       </label>
 
+      <label className="flex flex-col space-y-1">
+        <div className="text-sm font-bold mb-1">ファイル</div>
+        <input
+          type="file"
+          {...register('formFile2')}
+          className="text-gray-800 mt-4 rounded-md border py-2 px-3"
+        />
+        {errors.formFile2 && (
+          <div className="text-red-500 pl-1 pt-1 text-xs">
+            {errors.formFile2.message}
+          </div>
+        )}
+      </label>
+
       <button
         type="submit"
         disabled={!isValid || isSubmitting}
