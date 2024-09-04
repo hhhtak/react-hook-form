@@ -13,16 +13,23 @@ const JET_PUBLIC_KEY_BINARY = Buffer.from(
 const expiresIn = 60 * 60 * 2;
 const algorithm = 'RS256';
 
-export const Sign = (payload: any) => {
+export const jwtSign = (payload: any) => {
+  const aaa = jwt.sign(payload, JET_PRIVATE_KEY_BINARY, {
+    expiresIn,
+    algorithm,
+  });
+  console.log('jwtSign:', aaa);
   return jwt.sign(payload, JET_PRIVATE_KEY_BINARY, {
     expiresIn,
     algorithm,
   });
 };
 
-export const Verify = (payload: any) => {
+export const jwtVerify = (payload: any) => {
   try {
-    jwt.verify(payload, JET_PUBLIC_KEY_BINARY, { algorithms: [algorithm] });
+    return jwt.verify(payload, JET_PUBLIC_KEY_BINARY, {
+      algorithms: [algorithm],
+    });
   } catch (error) {
     throw new Error('verify failed');
   }
