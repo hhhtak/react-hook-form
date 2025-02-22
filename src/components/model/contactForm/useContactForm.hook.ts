@@ -18,6 +18,11 @@ export const useContactForm = () => {
     resolver: zodResolver(contactSchema),
   });
 
+  const handleSubmit2 = useCallback((id: string): number => {
+    console.log('hogehoge');
+    return 1;
+  }, []);
+
   return {
     errors,
     handleFormSubmit,
@@ -25,5 +30,6 @@ export const useContactForm = () => {
     isSubmitting,
     isValid,
     register,
+    handleSubmit2
   };
 };
